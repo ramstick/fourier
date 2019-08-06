@@ -66,7 +66,7 @@ var coeff = new Array(new complexNumber(0, 2), new complexNumber(0, 1), new comp
 
 var time = 0;
 var s = 50;
-var can_width = 800,
+var can_width = window.innerWidth,
     can_height = 800;
 var delta_t = 0.001;
 var num_seg = 100;
