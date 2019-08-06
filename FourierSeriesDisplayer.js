@@ -203,14 +203,13 @@ function draw() {
 
     for (var i = te; i < complexNumbers.length + te; i++) {
 
-        stroke(r, g, b, 255);
+        stroke(34, 45, 3, 255);
+        strokeWeight(10);
         var t1 = complexNumbers[i % num_seg],
             t2 = complexNumbers[(i + 1) % num_seg];
         t1.multiplyReal(s);
         t2.multiplyReal(s);
         drawComplexLine(t1, t2);
-        print(str(t1.a) + " " + str(t1.b));
-        print(str(t1.a) + " " + str(t1.b));
         r -= dr;
         g -= dg;
         b -= db;
