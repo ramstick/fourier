@@ -128,6 +128,8 @@ function recalculate() {
 
 function draw() {
 
+    can_width = window.innerWidth;
+    can_height = window.innerHeight;
 
 
     background(0);
