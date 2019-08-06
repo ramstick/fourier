@@ -66,7 +66,7 @@ var coeff = new Array(new complexNumber(0, 2), new complexNumber(0, 1), new comp
 
 var time = 0;
 var s = 50;
-var can_width = window.innerWidth,
+var can_width = 800,
     can_height = 800;
 var delta_t = 0.001;
 var num_seg = 100;
@@ -108,18 +108,20 @@ function drawGrid() {
 function recalculate() {
     complexNumbers = new Array();
     for (var i = 0; i < num_seg; i++) {
-        var curr = new complexNumber(0, 0);
+        var currX = 0,
+            currY = 0;
         var temp;
         for (var j = 0; j < freq.length; j++) {
             temp = complexExp(0, TWO_PI * freq[j] * (i / num_seg));
 
             temp.multiplyCompl(coeff[j]);
 
-            curr.addCompl(temp);
+            currX += temp.a;
+            currY += temp.b;
 
         }
 
-        complexNumbers.push(curr);
+        complexNumbers.push(new complexNumber(currX, currY));
     }
     console.log(complexNumbers.length);
     console.log(complexNumbers[76]);
@@ -128,8 +130,6 @@ function recalculate() {
 
 function draw() {
 
-    can_width = window.innerWidth;
-    can_height = window.innerHeight;
 
 
     background(0);
