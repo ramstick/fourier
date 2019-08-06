@@ -120,6 +120,7 @@ function recalculate() {
             currY += temp.b;
 
         }
+        print(str(currX) + " " + str(currY));
 
         complexNumbers.push(new complexNumber(currX, currY));
     }
