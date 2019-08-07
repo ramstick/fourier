@@ -40,6 +40,10 @@ function generateOrginComplexNumber() {
     return new complexNumber(0, 0);
 }
 
+function convert2DArray(twodarray) {
+    return new complexNumber(twodarray[0], twodarray[1]);
+}
+
 function complexExp(real, imaginary) {
 
     var output = new complexNumber(cos(imaginary), sin(imaginary));
@@ -68,8 +72,8 @@ var time = 0;
 var s = 50;
 var can_width = 800,
     can_height = 800;
-var delta_t = 0.001;
-var num_seg = 100;
+var delta_t = 0.01;
+var num_seg = 1000;
 var circle_stroke_weight = 2;
 var line_stroke_weight = 2;
 var drawn_curve_stroke_weight = 1;
@@ -122,7 +126,7 @@ function recalculate() {
         }
         print(str(currX) + " " + str(currY));
 
-        complexNumbers.push(new complexNumber(currX, currY));
+        complexNumbers.push(new Array(currX, currY));
     }
     console.log(complexNumbers.length);
     console.log(complexNumbers[76]);
@@ -200,22 +204,29 @@ function draw() {
     var r = 255.0,
         g = 255.0,
         b = 0.0;
-    var dr = r / num_seg,
-        dg = g / num_seg,
-        db = b / num_seg;
+    var dr = r / (num_seg + 1000),
+        dg = g / (num_seg + 1000),
+        db = b / (num_seg + 1000);
+    r = 0;
+    g = 0;
+    b = 0;
+
 
     for (var i = te; i < complexNumbers.length + te; i++) {
 
-        stroke(34, 45, 3, 255);
-        strokeWeight(10);
-        var t1 = complexNumbers[i % num_seg],
-            t2 = complexNumbers[(i + 1) % num_seg];
+        stroke(r, g, b, 255);
+        strokeWeight(2);
+        var t1 = convert2DArray(complexNumbers[i % num_seg]),
+            t2 = convert2DArray(complexNumbers[(i + 1) % num_seg]);
         t1.multiplyReal(s);
+        0
         t2.multiplyReal(s);
+        0
+
         drawComplexLine(t1, t2);
-        r -= dr;
-        g -= dg;
-        b -= db;
+        r += dr;
+        g += dg;
+        b += db;
 
     }
 
@@ -250,3 +261,4 @@ function mouseDragged(event) {
     }
     return false;
 }
+0
