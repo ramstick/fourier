@@ -264,4 +264,3 @@ function mouseDragged(event) {
     }
     return false;
 }
-00.
