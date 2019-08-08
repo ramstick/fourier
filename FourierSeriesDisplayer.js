@@ -89,6 +89,16 @@ var halfWidth = can_width / 2;
 var changeX = 0,
     changeY = 0;
 
+
+
+
+// Colors:
+
+drawnCurveColor = new Array(247, 240, 25, 230);
+circleColor = new Array(79, 185, 255, 128);
+
+
+
 function setup() {
 
     createCanvas(can_width, can_height);
@@ -142,9 +152,9 @@ function draw() {
 
     var te = int(time * num_seg);
 
-    var r = 255.0,
-        g = 255.0,
-        b = 0.0;
+    var r = drawnCurveColor[0],
+        g = drawnCurveColor[1],
+        b = drawnCurveColor[2];
     var dr = r / (num_seg),
         dg = g / (num_seg),
         db = b / (num_seg);
@@ -155,7 +165,7 @@ function draw() {
 
     for (var i = te; i < complexNumbers.length + te; i++) {
 
-        stroke(r, g, b, 255);
+        stroke(r, g, b, drawnCurveColor[4]);
         strokeWeight(2);
         var t1 = convert2DArray(complexNumbers[i % num_seg]),
             t2 = convert2DArray(complexNumbers[(i + 1) % num_seg]);
@@ -200,7 +210,7 @@ function draw() {
 
     for (var i = 0; i < freq.length; i++) {
 
-        stroke(41, 116, 255);
+        stroke(circleColor[0], circleColor[1], circleColor[2], circleColor[3]);
 
         circle(halfWidth + temp.a + shift_x, halfHeight - temp.b + shift_y, coeff[i].getDist() * 2 * s);
 
@@ -254,4 +264,4 @@ function mouseDragged(event) {
     }
     return false;
 }
-00
+00.
