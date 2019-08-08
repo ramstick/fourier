@@ -64,9 +64,9 @@ function drawComplexLine(comp1, comp2) {
 
 
 
-var freq = new Array(-1, 2, -3);
+var freq = new Array(-1, 2, -3, 4, -5, 6, -7, 8, -9, 10);
 
-var coeff = new Array(new complexNumber(0, 2), new complexNumber(0, 1), new complexNumber(1, 0));
+var coeff = new Array(new complexNumber(0, 2), new complexNumber(0, 1), new complexNumber(1, 0), new complexNumber(0, 2), new complexNumber(0, 1), new complexNumber(1, 0), new complexNumber(0, 2), new complexNumber(0, 1), new complexNumber(1, 0), new complexNumber(0.5, 0.5));
 
 var time = 0;
 var s = 50;
@@ -140,17 +140,39 @@ function draw() {
     background(0);
 
 
+    var te = int(time * num_seg);
+
+    var r = 255.0,
+        g = 255.0,
+        b = 0.0;
+    var dr = r / (num_seg),
+        dg = g / (num_seg),
+        db = b / (num_seg);
+    r = 0;
+    g = 0;
+    b = 0;
+
+
+    for (var i = te; i < complexNumbers.length + te; i++) {
+
+        stroke(r, g, b, 255);
+        strokeWeight(2);
+        var t1 = convert2DArray(complexNumbers[i % num_seg]),
+            t2 = convert2DArray(complexNumbers[(i + 1) % num_seg]);
+        t1.multiplyReal(s);
+        0
+        t2.multiplyReal(s);
+        0
+
+        drawComplexLine(t1, t2);
+        r += dr;
+        g += dg;
+        b += db;
+
+    }
+
 
     strokeWeight(2);
-
-    textSize(18);
-    fill(255, 255, 255);
-    var p = new complexNumber(0, 1);
-    var p2 = new complexNumber(0, 1);
-    p.multiplyCompl(p2);
-
-    text(str(p.a) + " + " + str(p.b) + " i", 0, 30);
-    text(str(p2.a) + " + " + str(p2.b) + " i", 0, 48);
 
 
 
@@ -199,36 +221,7 @@ function draw() {
     drawGrid();
 
 
-    var te = int(time * num_seg);
 
-    var r = 255.0,
-        g = 255.0,
-        b = 0.0;
-    var dr = r / (num_seg),
-        dg = g / (num_seg),
-        db = b / (num_seg);
-    r = 0;
-    g = 0;
-    b = 0;
-
-
-    for (var i = te; i < complexNumbers.length + te; i++) {
-
-        stroke(r, g, b, 255);
-        strokeWeight(2);
-        var t1 = convert2DArray(complexNumbers[i % num_seg]),
-            t2 = convert2DArray(complexNumbers[(i + 1) % num_seg]);
-        t1.multiplyReal(s);
-        0
-        t2.multiplyReal(s);
-        0
-
-        drawComplexLine(t1, t2);
-        r += dr;
-        g += dg;
-        b += db;
-
-    }
 
 
     time += delta_t;
@@ -261,4 +254,4 @@ function mouseDragged(event) {
     }
     return false;
 }
-0
+00
