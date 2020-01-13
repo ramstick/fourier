@@ -286,7 +286,7 @@ function displayCoeff() {
     for (var i = 0; i < discs.length; i++) {
         out += "Frequency: " + discs[i].freq + " Coefficient: " + Math.round(discs[i].coeff.r * 100) / 100 + "+" + Math.round(discs[i].coeff.i * 100) / 100 + "i,  ";
     }
-    out = out.slice(0, Math.min(out.length, 100));
+    //out = out.slice(0, Math.min(out.length, 100));
     document.getElementById("gae").innerHTML = out;
 }
 
